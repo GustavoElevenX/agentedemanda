@@ -1,0 +1,543 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #18201d;
+  background: #f5f6f2;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+select,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 7px;
+  padding: 0 14px;
+  color: #ffffff;
+  background: #175c4b;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+button.secondary,
+button.ghost {
+  color: #1f312b;
+  background: #e8ece4;
+}
+
+button.danger {
+  color: #ffffff;
+  background: #9d2d2d;
+}
+
+button.tiny {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #d8ddd2;
+  border-radius: 7px;
+  color: #18201d;
+  background: #ffffff;
+  padding: 10px 11px;
+}
+
+textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.appShell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 18px 14px;
+  color: #eef6ef;
+  background: #15352f;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px 22px;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  color: #15352f;
+  background: #e6c973;
+  font-weight: 900;
+}
+
+.brand strong,
+.brand span {
+  display: block;
+}
+
+.brand span {
+  color: #c7d8d2;
+  font-size: 13px;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 4px;
+}
+
+.sidebar nav button {
+  justify-content: flex-start;
+  min-height: 38px;
+  color: #d7e3df;
+  background: transparent;
+}
+
+.sidebar nav button.active {
+  color: #15352f;
+  background: #e6c973;
+}
+
+.main {
+  min-width: 0;
+  padding: 26px;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: #64706b;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 520px;
+}
+
+.gridPage {
+  display: grid;
+  gap: 18px;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric,
+.panel,
+.miniCard,
+.detailCard,
+.campaignCard,
+.approvalCard {
+  border: 1px solid #dde2d7;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.metric {
+  display: grid;
+  gap: 9px;
+  padding: 18px;
+}
+
+.metric svg {
+  color: #175c4b;
+}
+
+.metric span {
+  color: #64706b;
+  font-size: 14px;
+}
+
+.metric strong {
+  font-size: 30px;
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 16px;
+}
+
+.panelHeader svg {
+  color: #175c4b;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.actionBand,
+.buttonRow,
+.pillRow,
+.topActions,
+.sessionPicker,
+.chatInput {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.miniCard,
+.detailCard {
+  padding: 15px;
+}
+
+.miniCard strong,
+.detailCard strong,
+.campaignCard strong,
+.approvalCard strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.miniCard p,
+.detailCard p,
+.campaignCard p,
+.approvalCard p,
+.rowItem span,
+.sessionHeader span {
+  color: #5f6a65;
+}
+
+.detailCard dl {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px 12px;
+  margin: 12px 0 0;
+}
+
+.detailCard dt {
+  color: #64706b;
+  font-size: 13px;
+}
+
+.detailCard dd {
+  margin: 0;
+}
+
+.rowItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0e8;
+}
+
+.rowItem:last-child {
+  border-bottom: 0;
+}
+
+.rowItem strong,
+.rowItem span {
+  display: block;
+}
+
+.status,
+.pillRow span,
+.fieldPill {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 26px;
+  border-radius: 999px;
+  padding: 0 10px;
+  color: #265143;
+  background: #e5f2ec;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.status.pending,
+.status.waiting_review,
+.status.waiting_user_review {
+  color: #73560c;
+  background: #fbefc8;
+}
+
+.status.rejected,
+.status.error {
+  color: #8a2222;
+  background: #f8dddd;
+}
+
+.status.approved,
+.status.created_paused,
+.status.executed {
+  color: #155238;
+  background: #dff3e8;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 13px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: #3e4b45;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sessionLayout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+}
+
+.stack {
+  display: grid;
+  gap: 12px;
+}
+
+.sessionPicker button {
+  color: #33443d;
+  background: #eef1eb;
+}
+
+.sessionPicker button.selected {
+  color: #ffffff;
+  background: #175c4b;
+}
+
+.sessionHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f6f7f3;
+}
+
+.sessionHeader strong,
+.sessionHeader span {
+  display: block;
+}
+
+.chatBox {
+  display: grid;
+  max-height: 420px;
+  overflow: auto;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e1e5dc;
+  border-radius: 8px;
+  background: #f9faf7;
+}
+
+.message {
+  max-width: 82%;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.message.user {
+  justify-self: end;
+  color: #ffffff;
+  background: #175c4b;
+}
+
+.message span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.message p {
+  margin: 0;
+}
+
+.chatInput {
+  margin: 12px 0;
+  flex-wrap: nowrap;
+}
+
+.chatInput input {
+  flex: 1;
+}
+
+.decisionGrid,
+.approvalGrid,
+.campaignList,
+.logList {
+  display: grid;
+  gap: 12px;
+}
+
+.campaignCard,
+.approvalCard {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.metaBox {
+  min-width: 0;
+  border-radius: 8px;
+  background: #f5f6f2;
+  padding: 12px;
+}
+
+.metaBox h4 {
+  margin: 0 0 8px;
+}
+
+pre {
+  max-height: 260px;
+  overflow: auto;
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+
+.reviewChecklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+}
+
+.reviewChecklist span,
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notice {
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  color: #27443b;
+  background: #e8f2ee;
+}
+
+.iconTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #175c4b;
+  font-weight: 700;
+}
+
+.empty {
+  padding: 18px;
+  border: 1px dashed #cdd5c9;
+  border-radius: 8px;
+  color: #69746f;
+  background: #fbfcfa;
+}
+
+@media (max-width: 980px) {
+  .appShell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .sidebar nav {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .topbar,
+  .topActions {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .metricGrid,
+  .split,
+  .sessionLayout {
+    grid-template-columns: 1fr;
+  }
+}
