@@ -6,10 +6,13 @@ MVP 1 funcional do Agente de Demanda da Vértice.
 
 ```bash
 npm install
+npm run dev:api
 npm run dev
 ```
 
 O app usa `localStorage` como memória local do MVP. O schema Supabase completo está em `supabase/schema.sql`.
+
+Para IA real, rode a API local com `OPENAI_API_KEY` configurada. Para Meta Ads real, configure `META_ACCESS_TOKEN` e `META_AD_ACCOUNT_ID`. Sem essas variáveis, o produto mantém fallback seguro e registra o uso em `ai_usage`.
 
 ## O que está implementado
 

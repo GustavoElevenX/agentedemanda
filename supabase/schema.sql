@@ -167,10 +167,25 @@ create table creative_assets (
   script_text text,
   image_prompt text,
   asset_url text,
+  generation_cost_credits numeric default 0,
   meta_creative_id text,
   status text default 'draft',
   created_at timestamptz default now(),
   updated_at timestamptz default now()
+);
+
+create table generated_images (
+  id uuid primary key default gen_random_uuid(),
+  company_id uuid references companies(id) on delete cascade,
+  creative_asset_id uuid references creative_assets(id) on delete cascade,
+  session_id uuid references demand_sessions(id),
+  prompt text not null,
+  format text,
+  size text,
+  model text,
+  asset_url text not null,
+  cost_credits numeric default 1,
+  created_at timestamptz default now()
 );
 
 create table copy_variations (

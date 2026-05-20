@@ -354,6 +354,29 @@ h1 {
   gap: 13px;
 }
 
+.crudLayout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 16px;
+}
+
+.listRail {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.listRail button {
+  justify-content: flex-start;
+  color: #33443d;
+  background: #eef1eb;
+}
+
+.listRail button.selected {
+  color: #ffffff;
+  background: #175c4b;
+}
+
 label {
   display: grid;
   gap: 7px;
@@ -490,6 +513,23 @@ pre {
   gap: 8px;
 }
 
+.landingPreview {
+  margin: 12px 0;
+  padding: 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #15352f;
+}
+
+.landingPreview h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.landingPreview p {
+  color: #dce7e2;
+}
+
 .notice {
   margin-bottom: 14px;
   padding: 12px;
@@ -504,6 +544,32 @@ pre {
   gap: 8px;
   color: #175c4b;
   font-weight: 700;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.imageGrid figure {
+  margin: 0;
+}
+
+.imageGrid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dce2d7;
+}
+
+.imageGrid figcaption {
+  margin-top: 5px;
+  color: #64706b;
+  font-size: 12px;
 }
 
 .empty {
@@ -537,7 +603,8 @@ pre {
 
   .metricGrid,
   .split,
-  .sessionLayout {
+  .sessionLayout,
+  .crudLayout {
     grid-template-columns: 1fr;
   }
 }

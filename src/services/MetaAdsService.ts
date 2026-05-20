@@ -1,6 +1,8 @@
 import { Campaign, MetaConnection, PerformanceSnapshot } from "../types";
 import { now, uid } from "../lib/utils";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8787";
+
 export class MetaAdsService {
   connectMeta(companyId: string): MetaConnection {
     return {
@@ -30,6 +32,21 @@ export class MetaAdsService {
       { id: "mock_campaign_001", name: "Campanha antiga | Leads", status: "PAUSED" },
       { id: "mock_campaign_002", name: "Remarketing | Prova", status: "ACTIVE" },
     ];
+  }
+
+  async listAdAccountsReal() {
+    const response = await fetch(`${API_BASE_URL}/api/meta/ad-accounts`);
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Falha ao listar contas reais do Meta Ads.");
+    return data.data || [];
+  }
+
+  async listCampaignsReal(adAccountId?: string) {
+    const suffix = adAccountId ? `?adAccountId=${encodeURIComponent(adAccountId)}` : "";
+    const response = await fetch(`${API_BASE_URL}/api/meta/campaigns${suffix}`);
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Falha ao listar campanhas reais do Meta Ads.");
+    return data.data || [];
   }
 
   getInsights(campaign: Campaign): PerformanceSnapshot {
@@ -66,6 +83,22 @@ export class MetaAdsService {
 
   createPausedCampaign(campaign: Campaign) {
     return { metaCampaignId: `meta_campaign_${campaign.id.slice(-8)}`, status: "PAUSED" };
+  }
+
+  async createPausedCampaignReal(campaign: Campaign, adAccountId?: string) {
+    const response = await fetch(`${API_BASE_URL}/api/meta/campaigns/paused`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        adAccountId,
+        name: campaign.name,
+        objective: "OUTCOME_LEADS",
+        specialAdCategories: [],
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Falha ao criar campanha pausada real.");
+    return { metaCampaignId: data.id || data.metaCampaignId, status: data.status || "PAUSED", raw: data };
   }
 
   createPausedAdSet() {

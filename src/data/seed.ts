@@ -202,6 +202,8 @@ export const seedDatabase: Database = {
         "Gancho: Você não precisa de mais um pacote estético, precisa de diagnóstico. Cenas: especialista em consultório, explicação curta, prova, CTA para avaliação.",
       imagePrompt:
         "Foto realista de profissional de estética em consultório claro, atmosfera premium e confiável, sem promessas exageradas.",
+      generatedImages: [],
+      generationCostCredits: 0,
       status: "waiting_review",
       createdAt: now(),
       updatedAt: now(),
@@ -283,6 +285,7 @@ export const seedDatabase: Database = {
       updatedAt: now(),
     },
   ],
+  leads: [],
   approvals: [
     {
       id: approvalId,
@@ -367,5 +370,6 @@ export const seedDatabase: Database = {
       updatedAt: now(),
     },
   ],
+  aiUsage: [],
   auditLogs: [],
 };

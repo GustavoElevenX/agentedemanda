@@ -217,10 +217,22 @@ export interface CreativeAsset {
   scriptText?: string;
   imagePrompt?: string;
   assetUrl?: string;
+  generatedImages?: GeneratedImage[];
+  generationCostCredits?: number;
   metaCreativeId?: string;
   status: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface GeneratedImage {
+  id: Id;
+  url: string;
+  prompt: string;
+  format: string;
+  size: string;
+  model: string;
+  createdAt: string;
 }
 
 export interface CopyVariation {
@@ -283,6 +295,21 @@ export interface LeadForm {
   status: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface Lead {
+  id: Id;
+  companyId: Id;
+  campaignId?: Id;
+  formId?: Id;
+  name: string;
+  email: string;
+  whatsapp: string;
+  city: string;
+  source: string;
+  payload: Record<string, unknown>;
+  status: string;
+  createdAt: string;
 }
 
 export interface Approval {
@@ -379,6 +406,21 @@ export interface AuditLog {
   createdAt: string;
 }
 
+export interface AiUsage {
+  id: Id;
+  companyId: Id;
+  userId: Id;
+  sessionId?: Id;
+  generationType: string;
+  model: string;
+  promptTokens: number;
+  completionTokens: number;
+  imageCount: number;
+  estimatedCost: number;
+  status: string;
+  createdAt: string;
+}
+
 export interface Database {
   companies: Company[];
   companyDna: CompanyDna[];
@@ -391,10 +433,12 @@ export interface Database {
   funnelDecisions: FunnelDecision[];
   landingPages: LandingPage[];
   forms: LeadForm[];
+  leads: Lead[];
   approvals: Approval[];
   metaConnections: MetaConnection[];
   performanceSnapshots: PerformanceSnapshot[];
   aiEvaluations: AiEvaluation[];
   learnedPatterns: LearnedPattern[];
+  aiUsage: AiUsage[];
   auditLogs: AuditLog[];
 }

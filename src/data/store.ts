@@ -11,7 +11,8 @@ export class LocalStore {
       this.save(seedDatabase);
       return structuredClone(seedDatabase);
     }
-    return JSON.parse(raw) as Database;
+    const db = JSON.parse(raw) as Database;
+    return this.migrate(db);
   }
 
   save(db: Database) {
@@ -33,6 +34,17 @@ export class LocalStore {
       metadata,
       createdAt: now(),
     });
+  }
+
+  private migrate(db: Database): Database {
+    db.aiUsage ||= [];
+    db.leads ||= [];
+    db.creativeAssets = (db.creativeAssets || []).map((asset) => ({
+      ...asset,
+      generatedImages: asset.generatedImages || [],
+      generationCostCredits: asset.generationCostCredits || 0,
+    }));
+    return db;
   }
 }
 
